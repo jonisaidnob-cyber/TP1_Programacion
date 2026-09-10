@@ -4,7 +4,7 @@ const productos = [
     {
         id: 1,
         nombre: "Notebook Lenovo Ideapad Slim 3 ",
-        precio: 889999,
+        precio: 889.999,
         imagen1: "assets/img/notebookLenovo1.jpg",
         imagen2: "assets/img/notebookLenovo2.jpg",
         imagen3: "assets/img/notebookLenovo3.jpg",
@@ -13,7 +13,7 @@ const productos = [
     {
         id: 2,
         nombre: "Celular Samsung Galaxy A07",
-        precio: 289999,
+        precio: 289.999,
         imagen1: "assets/img/celularSamsung1.jpg",
         imagen2: "assets/img/celularSamsung2.jpg",
         imagen3: "assets/img/celularSamsung3.jpg",
@@ -22,7 +22,7 @@ const productos = [
     {
         id: 3,
         nombre: "Tablet Philco 10.1",
-        precio: 179999,
+        precio: 179.999,
         imagen1: "assets/img/tabletPhilco1.jpg",
         imagen2: "assets/img/tabletPhilco2.jpg",
         imagen3: "assets/img/tabletPhilco3.jpg",
@@ -31,3 +31,23 @@ const productos = [
 ];
 
 localStorage.setItem("productos", JSON.stringify(productos));
+
+
+//Muestra los productos en la página principal
+
+const listaProductos = document.getElementById("listaProductos");
+
+for(i = 0; i < 3; i++){
+    const nuevaImagen = document.createElement("img");
+    listaProductos.appendChild(nuevaImagen);
+    nuevaImagen.src = productos[i].imagen1;
+    nuevaImagen.classList.add("productoImagen");
+
+    const nuevaDescripcion = document.createElement("p");
+    listaProductos.appendChild(nuevaDescripcion);
+    nuevaDescripcion.textContent = productos[i].descripcion;
+
+    const nuevoPrecio = document.createElement("p");
+    listaProductos.appendChild(nuevoPrecio);
+    nuevoPrecio.textContent = "$" + productos[i].precio;
+}

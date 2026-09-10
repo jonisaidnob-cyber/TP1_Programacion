@@ -22,10 +22,25 @@
 
         <main>
             <h2>Productos</h2>
-            <script src="producto.js"></script><!--Información de los productos-->
-        </main>
-
-        <main>
+            <div id="listaProductos"></div>
+            
             <h2><a href="formulario.html">Registro de clientes</a></h2>
+        </main>
+        <script src="producto.js"></script><!--Información de los productos-->
     </body>
 </html>
+
+<!--<script>
+        const temaGuardado = localStorage.getItem("tema")
+        if( temaGuardado){
+            document.body.className=temaGuardado
+        }
+        document.getElementById("temaOscuro").addEventListener("click", function(){
+            document.body.className="tema-oscuro"
+            localStorage.setItem("tema","tema-oscuro")
+        })
+        document.getElementById("temaClaro").addEventListener("click", function(){
+            document.body.className="tema-claro"
+            localStorage.setItem("tema","tema-claro")
+        })        
+    </script>-->
