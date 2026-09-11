@@ -10,7 +10,7 @@
     height: 15rem;
 }
 
-/* Reset y variables de color pastel */
+/* Formulario */
 :root {
   --primary-gradient: linear-gradient(135deg, #a8ebe6 0%, #a8c0ff 100%);
   --accent-gradient: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
