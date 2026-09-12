@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+     
   // NAVEGACIÓN
   window.switchTab = (tabName) => {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
