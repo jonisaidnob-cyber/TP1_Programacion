@@ -10,6 +10,86 @@
     height: 15rem;
 }
 
+
+/*General*/
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+body{
+    background: linear-gradient(135deg, #fff5f5 0%, #e8f0fe 50%, #f3e8ff 100%);
+    background-attachment: fixed;
+    color: #3d3b4e;
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+/*header fijo*/
+header{
+  
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(160, 175, 210, 0.2);
+    padding: 10px;
+    z-index: 1000;
+}
+
+/*titulo tienda digital*/
+header h1{
+    font-size: 2rem;
+    color: #332d41;
+    }
+
+/*contenedor navegacion*/
+.nav-item {
+  text-decoration: none;
+  color: #78758a;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.nav-item:hover {
+  color: #332d41;
+  }
+
+.nav-centro {
+  text-align: center;
+}
+
+.nav-derecha {
+  display: flex;
+  align-items: center;
+}
+
+#carrito{
+    width: 30px;
+    height: 30px;
+    object-fit: center;
+}
+
+/*ajuste contenido principal*/
+main{
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+main h2{
+    color: #332d41;
+    margin-bottom: 20px;
+}
+
+
+
 /* Formulario */
 :root {
   --primary-gradient: linear-gradient(135deg, #a8ebe6 0%, #a8c0ff 100%);
