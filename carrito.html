@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tienda Digital</h1>
+        <a href="index.html">Volver a Productos</a>
+        <a href="formulario.html" id="linkRegistro">Registro clientes</a>
+    </header>
+
+    <main class="contenedor-carrito">
+        <h2>Tu Carrito de Compras</h2>
+        
+   
+        <div id="lista-carrito"></div>
+        
+        <div class="resumen-total">
+            <h3>Total a pagar: $<span id="precio-total">0</span></h3>
+            <!-- Este botón redirige a la página del formulario -->
+            <a href="formulario.html" class="btn-ir-pagar">Ir a Pagar</a>
+        </div>
+    </main>
+
+    <script src="carrito.js"></script>
+</body>
+</html>
