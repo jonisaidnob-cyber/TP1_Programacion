@@ -100,14 +100,15 @@ header a img {
     width: 20px;
     height: 20px;
     object-fit: contain;
-    filter: brightness(0) invert(1); /* Vuelve blanco el icono si es oscuro para que contraste */
+    filter: brightness(0) invert(1); /* Vuelve blanco el icono oscuro para que contraste */
 }
 
 /* ==========================================
    Contenido Principal (Main)
    ========================================== */
 main {
-    max-width: 1200px;
+    box-sizing: border-box;
+    max-width: 50%;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
@@ -122,10 +123,14 @@ main h2 {
 
 /* Contenedor de productos (Alineado a la izquierda por defecto en grid) */
 #listaProductos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: flex;
     gap: 1.5rem;
-    justify-content: start; /* Asegura que los productos fluyan desde la izquierda */
+    overflow: auto;
+    width: 100%;
+}
+
+.contenedorProducto {
+    flex: 0 0 240px;
 }
 
 /* ==========================================
@@ -154,30 +159,9 @@ main h2 {
 }
 
 
-
-
-
 /* ==========================================
    Formulario
    ========================================== */
-:root {
-    --primary-color: #2563eb;
-    --primary-hover: #1d4ed8;
-    --bg-color: #f8fafc;
-    --card-bg: #ffffff;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --border-color: #e2e8f0;
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --header-height: 70px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
 
 body {
     background-color: var(--bg-color);
@@ -450,7 +434,6 @@ tr:hover td {
     gap: 15px;
 }
 
-/* Controlamos el tamaño de la imagen que te pasó tu compañero */
 .img-carrito {
     width: 80px;
     height: 80px;
@@ -489,10 +472,10 @@ tr:hover td {
     font-weight: bold;
 }
 
-/* Breakpoint para Celulares (Responsive obligatorio) */
+/* Breakpoint para Celulares Responsive */
 @media (max-width: 480px) {
     .item-carrito {
-        flex-direction: column; /* Apilamos foto, texto y botón */
+        flex-direction: column;
         text-align: center;
     }
     .resumen-total {
