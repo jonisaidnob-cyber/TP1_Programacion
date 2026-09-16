@@ -249,9 +249,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-const pagar = document.getElementById('pagar');
-pagar.addEventListener('click', function() {
-  alert('¡Compra confirmada! Gracias por su compra.');
-  localStorage.removeItem('carrito');
-  window.location.href = 'index.html';
+document.addEventListener('DOMContentLoaded', () => {
+  const pagar = document.getElementById('pagar');
+  if (pagar) {
+    pagar.addEventListener('click', () => {
+      alert('¡Compra confirmada! Gracias por su compra.');
+      localStorage.removeItem('carrito');
+      window.location.href = 'index.html';
+    });
+  }
 });
