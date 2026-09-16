@@ -250,8 +250,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const pagar = document.getElementById('pagar');
-  if (pagar) {
+  const pagar = document.getElementById('confirmar');
+  if (confirmar) {
     pagar.addEventListener('click', () => {
       alert('¡Compra confirmada! Gracias por su compra.');
       localStorage.removeItem('carrito');
