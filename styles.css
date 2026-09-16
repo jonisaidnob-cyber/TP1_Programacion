@@ -334,7 +334,7 @@ body {
     padding-top: 1.5rem;
 }
 
-#pagar {
+#pagar, #confirmar {
     background-color: var(--primary-color);
     color: white;
     border: none;
@@ -482,3 +482,4 @@ tr:hover td {
         align-items: center;
     }
 }
+
