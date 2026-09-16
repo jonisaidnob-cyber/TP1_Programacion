@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-     
+
   // NAVEGACIÓN
   window.switchTab = (tabName) => {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('btnCancelar')?.addEventListener('click', resetForm);
 
-  
+
   renderUsuarios();
   renderCatalogo();
   guardarYRenderizarCarrito();
