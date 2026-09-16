@@ -248,3 +248,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+const pagar = document.getElementById('pagar');
+pagar.addEventListener('click', function() {
+  alert('¡Compra confirmada! Gracias por su compra.');
+  localStorage.removeItem('carrito');
+  window.location.href = 'index.html';
+});
