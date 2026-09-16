@@ -4,7 +4,7 @@
 
 const listaProductos = document.getElementById("listaProductos");
 
-function mostrarProducto(producto){
+function mostrarProducto(producto) {
     const nuevoContenedorProducto = document.createElement("div");
     nuevoContenedorProducto.classList.add("contenedorProducto");
     listaProductos.appendChild(nuevoContenedorProducto);
@@ -22,23 +22,94 @@ function mostrarProducto(producto){
     nuevoContenedorProducto.appendChild(nuevoPrecio);
     nuevoPrecio.textContent = "$" + producto.precio;
 
+    //Botón para agregar el producto al carrito si no está
     const nuevoBotonCarrito = document.createElement("button");
     nuevoContenedorProducto.appendChild(nuevoBotonCarrito);
     nuevoBotonCarrito.textContent = "Agregar al Carrito";
     nuevoBotonCarrito.classList.add("botonAgregarAlCarrito");
-    nuevoBotonCarrito.addEventListener("click", function(){
+    nuevoBotonCarrito.addEventListener("click", function () {
         agregarAlCarrito(producto);
+        visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
     });
+
+    //Botones para modificar la cantidad del producto en el carrito si ya fue agragado
+    const contenedorCantidad = document.createElement("div");
+    contenedorCantidad.classList.add("controlCantidad");
+    nuevoContenedorProducto.appendChild(contenedorCantidad);
+
+    const botonMenos = document.createElement("button");
+    botonMenos.textContent = "-";
+    contenedorCantidad.appendChild(botonMenos);
+    botonMenos.addEventListener("click", function () {
+        textoCantidad.textContent = actualizarCantidad(producto, -1);
+        visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
+
+    })
+
+    const textoCantidad = document.createElement("span");
+    textoCantidad.textContent = "1";
+    contenedorCantidad.appendChild(textoCantidad);
+
+    const botonMas = document.createElement("button");
+    botonMas.textContent = "+";
+    contenedorCantidad.appendChild(botonMas);
+    botonMas.addEventListener("click", function () {
+        textoCantidad.textContent = actualizarCantidad(producto, 1);
+    })
+
+    visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
 }
 
-function agregarAlCarrito(producto){
+function agregarAlCarrito(producto) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-    carrito.push(producto);
+    const productoEnCarrito = carrito.find(p => p.id === producto.id);
+
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+    } else {
+        carrito.push({
+            ...producto,
+            cantidad: 1
+        });
+    }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-for(let i = 0; i < 3; i++){
+function actualizarCantidad(producto, cambio) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const productoEnCarrito = carrito.find(p => p.id === producto.id);
+
+    if(productoEnCarrito){
+        productoEnCarrito.cantidad += cambio;
+
+        if(productoEnCarrito.cantidad <= 0){
+            carrito = carrito.filter(p => p.id !== producto.id);
+        }
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        
+        return productoEnCarrito.cantidad;
+    }
+}
+
+function visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const productoEnCarrito = carrito.find(p => p.id === producto.id);
+
+    if (productoEnCarrito) {
+        nuevoBotonCarrito.style.display = "none";
+        contenedorCantidad.style.display = "flex";
+    }
+    else {
+        nuevoBotonCarrito.style.display = "flex";
+        contenedorCantidad.style.display = "none";
+    }
+}
+
+for (let i = 0; i < productos.length; i++) {
     mostrarProducto(productos[i]);
 }
