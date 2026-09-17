@@ -483,3 +483,104 @@ tr:hover td {
     }
 }
 
+/* ==========================================
+   Login / Iniciar Sesión
+   ========================================== */
+
+/* Contenedor tipo tarjeta centrada en la pantalla */
+.login-container {
+    max-width: 420px;
+    margin: 4rem auto; /* Centrado horizontal y margen superior */
+    padding: 2.5rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.login-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.75rem;
+}
+
+/* Espaciado para los inputs (reutilizando tu estilo form-group) */
+.login-container .form-group {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Botón principal de inicio de sesión */
+.login-container .btn-primary {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.login-container .btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Sección inferior de registro */
+.register-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.register-section p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.register-section a {
+    text-decoration: none;
+    display: block;
+}
+
+/* Botón secundario para registro */
+.login-container .btn-secondary {
+    width: 100%;
+    background-color: #e2e8f0;
+    color: var(--text-main);
+    border: none;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-container .btn-secondary:hover {
+    background-color: #cbd5e1;
+}
