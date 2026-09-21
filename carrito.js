@@ -1,19 +1,34 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //Le pedimos al localStorage que nos traiga lo que el usuario eligió
-    
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     
     const listaCarrito = document.getElementById("lista-carrito");
     const totalPrecio = document.getElementById("precio-total");
     const btnPagar = document.querySelector(".btn-ir-pagar");
 
-    // Función para dibujar todo en pantalla
+    // 1.Agrupa productos repetidos y les asigna una "cantidad"
+    function agregarProductosRepetidos() {
+        let carritoProduAgrup = [];
+        carrito.forEach(producto => {
+            let existente = carritoProduAgrup.find(item => item.id === producto.id);
+            if (existente) {
+                existente.cantidad = (existente.cantidad || 1) + 1;
+            } else {
+                producto.cantidad = producto.cantidad || 1;
+                carritoProduAgrup.push(producto);
+            }
+        });
+        
+        carrito = carritoProduAgrup;
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    }
+
+    // 2. FUNCIÓN PARA DIBUJAR LA PANTALLA
     function renderizarCarrito() {
-        listaCarrito.innerHTML = ""; // Limpiamos primero
+        listaCarrito.innerHTML = ""; 
         let total = 0;
 
         if (carrito.length === 0) {
-            listaCarrito.innerHTML = "<p>El carrito está vacío.</p>";
+            listaCarrito.innerHTML = "<p>El carrito está vacío. ¡Agregá algunos productos!</p>";
             btnPagar.style.display = "none";
             totalPrecio.textContent = "0";
             return;
@@ -21,54 +36,90 @@ document.addEventListener("DOMContentLoaded", function() {
 
         btnPagar.style.display = "inline-block";
 
-        // Recorremos cada producto y lo dibujamos
         carrito.forEach((producto, index) => {
-            total += producto.precio;
+            let subtotal = producto.precio * producto.cantidad;
+            total += subtotal;
 
             const divItem = document.createElement("div");
             divItem.classList.add("item-carrito");
             
-            
             divItem.innerHTML = `
                 <img src="${producto.imagen1}" alt="${producto.nombre}" class="img-carrito">
+                
                 <div class="info-producto">
                     <h4>${producto.nombre}</h4>
-                    <p>$${producto.precio}</p>
+                    <p>Precio unitario: $${producto.precio.toLocaleString('es-AR')}</p>
+                    
+                    <!-- Controles de cantidad -->
+                    <div class="control-cantidad">
+                        <button class="btn-restar" data-index="${index}">-</button>
+                        <span class="cantidad-numero">${producto.cantidad}</span>
+                        <button class="btn-sumar" data-index="${index}">+</button>
+                    </div>
                 </div>
-                <button class="btn-eliminar" data-index="${index}">Eliminar</button>
+
+                <div class="acciones-producto">
+                    <p><strong>$${subtotal.toLocaleString('es-AR')}</strong></p>
+                    <button class="btn-eliminar" data-index="${index}">Eliminar</button>
+                </div>
             `;
             
             listaCarrito.appendChild(divItem);
         });
 
-        // Actualizamos el total sumando los precios
         totalPrecio.textContent = total.toLocaleString('es-AR');
         
-        // Le damos función a todos los botones de "Eliminar"
-        asignarBotonesEliminar();
+        // Llamamos a la función que le da vida a los botones
+        asignarEventos();
     }
 
-    //Función para borrar un producto
-    function asignarBotonesEliminar() {
-        const botonesEliminar = document.querySelectorAll(".btn-eliminar");
-        
-        botonesEliminar.forEach(boton => {
+    // 3. FUNCIÓN PARA DARLE VIDA A LOS BOTONES (+, -, Eliminar)
+    function asignarEventos() {
+        // Botón Eliminar
+        document.querySelectorAll(".btn-eliminar").forEach(boton => {
             boton.addEventListener("click", function() {
-                // Buscamos qué número de posición tiene en el array
+                const posicion = this.getAttribute("data-index");
+                carrito.splice(posicion, 1);
+                actualizarStorageYPantalla();
+            });
+        });
+
+        // Botón Sumar (+)
+        document.querySelectorAll(".btn-sumar").forEach(boton => {
+            boton.addEventListener("click", function() {
+                const posicion = this.getAttribute("data-index");
+                carrito[posicion].cantidad++;
+                actualizarStorageYPantalla();
+            });
+        });
+
+        // Botón Restar (-)
+        document.querySelectorAll(".btn-restar").forEach(boton => {
+            boton.addEventListener("click", function() {
                 const posicion = this.getAttribute("data-index");
                 
-                // Lo borramos del array
-                carrito.splice(posicion, 1);
-                
-                // Guardamos el array actualizado en localStorage
-                localStorage.setItem("carrito", JSON.stringify(carrito));
-                
-                // Volvemos a dibujar la pantalla
-                renderizarCarrito();
+                // Si hay más de 1, restamos. 
+                if (carrito[posicion].cantidad > 1) {
+                    carrito[posicion].cantidad--;
+                    actualizarStorageYPantalla();
+                } else {
+                    // Si hay 1 solo y tocan restar, le preguntamos si quiere borrarlo
+                    if(confirm("¿Querés eliminar el producto del carrito?")) {
+                        carrito.splice(posicion, 1);
+                        actualizarStorageYPantalla();
+                    }
+                }
             });
         });
     }
 
-    // Arrancamos la aplicación
+    // 4. FUNCIÓN AUXILIAR: Guarda los cambios y redibuja
+    function actualizarStorageYPantalla() {
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        renderizarCarrito();
+    }
+
+    // --- ARRANQUE DE LA APLICACIÓN ---
+    agregarProductosRepetidos();
     renderizarCarrito();
 });
