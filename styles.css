@@ -416,7 +416,7 @@ tr:hover td {
 /* ==========================================
    Carrito
    ========================================== */
-/* Layout del carrito usando Flexbox */
+
 .contenedor-carrito {
     max-width: 800px;
     margin: 30px auto;
@@ -472,6 +472,39 @@ tr:hover td {
     font-weight: bold;
 }
 
+/* ESTILOS PARA LA CANTIDAD */
+.control-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-sumar, .btn-restar {
+    background-color: #ddd;
+    border: none;
+    padding: 5px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-sumar:hover, .btn-restar:hover {
+    background-color: #bbb;
+}
+
+.cantidad-numero {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.acciones-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
 /* Breakpoint para Celulares Responsive */
 @media (max-width: 480px) {
     .item-carrito {
