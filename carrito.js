@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     
                     <!-- Controles de cantidad -->
                     <div class="control-cantidad">
-                        <button class="btn-restar" data-index="${index}">-</button>
+                       <button class="btn-restar" data-index="${index}" ${producto.cantidad === 1 ? 'disabled' : ''}>-</button>
                         <span class="cantidad-numero">${producto.cantidad}</span>
                         <button class="btn-sumar" data-index="${index}">+</button>
                     </div>
@@ -93,21 +93,15 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
 
-        // Botón Restar (-)
+       // Botón Restar (-)
         document.querySelectorAll(".btn-restar").forEach(boton => {
             boton.addEventListener("click", function() {
                 const posicion = this.getAttribute("data-index");
                 
-                // Si hay más de 1, restamos. 
+                // Solo resta si hay más de 1. Si hay 1, ignora el clic.
                 if (carrito[posicion].cantidad > 1) {
                     carrito[posicion].cantidad--;
                     actualizarStorageYPantalla();
-                } else {
-                    // Si hay 1 solo y tocan restar, le preguntamos si quiere borrarlo
-                    if(confirm("¿Querés eliminar el producto del carrito?")) {
-                        carrito.splice(posicion, 1);
-                        actualizarStorageYPantalla();
-                    }
                 }
             });
         });
