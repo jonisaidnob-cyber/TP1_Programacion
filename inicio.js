@@ -5,12 +5,17 @@
 const listaProductos = document.getElementById("listaProductos");
 
 function mostrarProducto(producto) {
+    
     const nuevoContenedorProducto = document.createElement("div");
     nuevoContenedorProducto.classList.add("contenedorProducto");
     listaProductos.appendChild(nuevoContenedorProducto);
 
+    const enlaceProducto = document.createElement("a");
+    enlaceProducto.href = "vistaProducto.html";
+    nuevoContenedorProducto.appendChild(enlaceProducto);
+
     const nuevaImagen = document.createElement("img");
-    nuevoContenedorProducto.appendChild(nuevaImagen);
+    enlaceProducto.appendChild(nuevaImagen);
     nuevaImagen.src = producto.imagen1;
     nuevaImagen.classList.add("productoImagen");
 
@@ -30,7 +35,7 @@ function mostrarProducto(producto) {
     nuevoBotonCarrito.addEventListener("click", function () {
         agregarAlCarrito(producto);
         visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
-        textoCantidad.textContent = 1;
+        textoCantidad.textContent = actualizarCantidad(producto, 0);
     });
 
     //Botones para modificar la cantidad del producto en el carrito si ya fue agragado
@@ -49,7 +54,7 @@ function mostrarProducto(producto) {
     })
 
     const textoCantidad = document.createElement("span");
-    textoCantidad.textContent = "1";
+    textoCantidad.textContent = actualizarCantidad(producto, 0);
     contenedorCantidad.appendChild(textoCantidad);
 
     const botonMas = document.createElement("button");
