@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    //Le pedimos al localStorage que nos traiga lo que el usuario eligió
-    
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     
     const listaCarrito = document.getElementById("lista-carrito");
@@ -14,12 +12,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (carrito.length === 0) {
             listaCarrito.innerHTML = "<p>El carrito está vacío.</p>";
-            btnPagar.style.display = "none";
+            if (btnPagar) btnPagar.style.display = "none";
             totalPrecio.textContent = "0";
             return;
         }
 
-        btnPagar.style.display = "inline-block";
+        if (btnPagar) btnPagar.style.display = "inline-block";
 
         // Recorremos cada producto y lo dibujamos
         carrito.forEach((producto, index) => {
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const divItem = document.createElement("div");
             divItem.classList.add("item-carrito");
-            
             
             divItem.innerHTML = `
                 <img src="${producto.imagen1}" alt="${producto.nombre}" class="img-carrito">
@@ -48,24 +45,37 @@ document.addEventListener("DOMContentLoaded", function() {
         asignarBotonesEliminar();
     }
 
-    //Función para borrar un producto
+    // Función para borrar un producto
     function asignarBotonesEliminar() {
         const botonesEliminar = document.querySelectorAll(".btn-eliminar");
         
         botonesEliminar.forEach(boton => {
             boton.addEventListener("click", function() {
-                // Buscamos qué número de posición tiene en el array
                 const posicion = this.getAttribute("data-index");
                 
-                // Lo borramos del array
                 carrito.splice(posicion, 1);
-                
-                // Guardamos el array actualizado en localStorage
                 localStorage.setItem("carrito", JSON.stringify(carrito));
                 
-                // Volvemos a dibujar la pantalla
                 renderizarCarrito();
             });
+        });
+    }
+
+    // Evento para ir a pagar: guarda el total y redirige al formulario unificado
+    if (btnPagar) {
+        btnPagar.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            // Calculamos el total actual
+            let totalGeneral = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
+
+            // Guardamos el total y los datos clave de la orden en el localStorage
+            localStorage.setItem("totalCompra", totalGeneral);
+            localStorage.setItem("resumenCompra", JSON.stringify(carrito));
+
+            // Redirigimos al HTML de registro y pago unificado 
+            // (Cambia "registro.html" por el nombre exacto de tu archivo HTML unificado)
+            window.location.href = "nuevregistro.html"; 
         });
     }
 
