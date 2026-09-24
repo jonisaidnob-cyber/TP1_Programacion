@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (!validarPassword(password)) {
-        alert("La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un carácter especial.");
+        alert("La contraseña debe tener al menos 8 caracteres, una letra mayúscula y un carácter especial. Será utilizada al momento de la entrega/retiro del/los productos");
         return;
       }
 
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.removeItem("totalCompra");
       localStorage.removeItem("resumenCompra");
 
-      alert("Compra confirmada, se ha enviado la factura a su email.");
+      alert("Compra confirmada, se ha enviado la factura a su email. Recuerde que deberá aportar la contraseña para su retiro/entrega");
       window.location.href = "index.html";
     });
   }
