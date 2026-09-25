@@ -515,9 +515,6 @@ tr:hover td {
         padding: 1.25rem;
     }
 }
-/* ==========================================
-   Carrito
-   ========================================== */
 
 
 /*========================================== 
@@ -646,7 +643,7 @@ transition: background-color 0.2s;
 .btn-ir-pagar:hover {
 background-color: #219653;
 }
-
+}
 /* ==========================================
 Responsive Design
 ========================================== */
@@ -691,4 +688,87 @@ text-align: center;
 align-items: center;
 }
 }
+
+
+/* Responsive: apila la foto y el texto en celulares */
+@media (max-width: 768px) {
+    .contenedor-vista-producto {
+        flex-direction: column;
+    }
+}
+
+/* --- ESTILOS DE LA VISTA DE PRODUCTO --- */
+.contenedor-vista-producto {
+    max-width: 900px;
+    margin: 40px auto;
+    display: flex;
+    gap: 40px;
+    padding: 30px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.galeria-producto {
+    flex: 1;
+}
+
+.img-principal {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: white;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.miniatura {
+    width: 30%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.miniatura:hover {
+    border: 2px solid #4CAF50;
+}
+
+.info-detalle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info-detalle h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.descripcion-detalle {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.precio-detalle {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+}
+#btn-agregar-detalle {
+    align-self: flex-start; /* Evita que el botón se estire a lo ancho */
+    padding: 15px 30px; /* Le da más aire por dentro */
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    margin-top: 10px;
 }

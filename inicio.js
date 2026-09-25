@@ -9,8 +9,16 @@ function mostrarProducto(producto) {
     nuevoContenedorProducto.classList.add("contenedorProducto");
     listaProductos.appendChild(nuevoContenedorProducto);
 
+    const enlaceProducto = document.createElement("a");
+    enlaceProducto.href = "vistaProducto.html";
+    nuevoContenedorProducto.appendChild(enlaceProducto);
+
+    enlaceProducto.addEventListener("click", function() {
+        localStorage.setItem("productoSeleccionado", producto.id);
+    });
+
     const nuevaImagen = document.createElement("img");
-    nuevoContenedorProducto.appendChild(nuevaImagen);
+    enlaceProducto.appendChild(nuevaImagen);
     nuevaImagen.src = producto.imagen1;
     nuevaImagen.classList.add("productoImagen");
 
