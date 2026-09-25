@@ -3,6 +3,8 @@
 //let productos = localStorage.getItem(JSON.parse('productos'));
 
 const listaProductos = document.getElementById("listaProductos");
+const cantidadDeProductos = document.getElementById("cantidadDeProductos");
+cantidadDeProductos.textContent = actualizarCantidadCarrito();
 
 function mostrarProducto(producto) {
     
@@ -40,6 +42,7 @@ function mostrarProducto(producto) {
         agregarAlCarrito(producto);
         visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
         textoCantidad.textContent = actualizarCantidad(producto, 0);
+        cantidadDeProductos.textContent = actualizarCantidadCarrito();
     });
 
     //Botones para modificar la cantidad del producto en el carrito si ya fue agragado
@@ -53,6 +56,7 @@ function mostrarProducto(producto) {
     botonMenos.classList.add("btn-restar");
     botonMenos.addEventListener("click", function () {
         textoCantidad.textContent = actualizarCantidad(producto, -1);
+        cantidadDeProductos.textContent = actualizarCantidadCarrito();
         visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
 
     })
@@ -67,6 +71,7 @@ function mostrarProducto(producto) {
     botonMas.classList.add("btn-sumar");
     botonMas.addEventListener("click", function () {
         textoCantidad.textContent = actualizarCantidad(producto, 1);
+        cantidadDeProductos.textContent = actualizarCantidadCarrito();
     })
 
     visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
@@ -106,6 +111,19 @@ function actualizarCantidad(producto, cambio) {
         return productoEnCarrito.cantidad;
     }
 }
+
+function actualizarCantidadCarrito() {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    let cantidad = 0;
+
+    carrito.forEach(producto => {
+        cantidad += producto.cantidad;
+    });
+
+    return cantidad;
+}
+
 
 function visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad) {
     let carrito = JSON.parse(localStorage.getItem("carrito")) || [];

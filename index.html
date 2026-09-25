@@ -9,34 +9,36 @@
     <body>
         <header>
             <h1>Tienda Digital</h1>
-            <a href="carrito.html">Carrito de Compras
-                <img src="assets/img/carrito.png">
+            <a href="carrito.html"
+                >Carrito de Compras <img src="assets/img/carrito.png" />
+                <p id="cantidadDeProductos">0</p>
             </a>
-
-            
-            
         </header>
 
         <main>
             <h2>Productos</h2>
             <div id="listaProductos"></div>
         </main>
-        <script src="producto.js"></script><!--Información de los productos-->
+        <script src="producto.js"></script>
+        <!--Información de los productos-->
         <script src="inicio.js"></script>
+
+        <footer>
+            <div class="footerSeccion">
+                <h3>Información</h3>
+                <p>Sobre nosotros</p>
+                <p>Preguntas frecuentes</p>
+                <p>Política de privacidad</p>
+            </div>
+
+            <div class="footerSeccion">
+                <h3>Contacto</h3>
+                <p>📧 contacto@tiendadigital.com</p>
+                <p>📞 341 234-5678</p>
+            </div>
+            <div class="footerCopyright">
+                © 2026 Tienda Digital - Todos los derechos reservados
+            </div>
+        </footer>
     </body>
 </html>
-
-<!--<script>
-        const temaGuardado = localStorage.getItem("tema")
-        if( temaGuardado){
-            document.body.className=temaGuardado
-        }
-        document.getElementById("temaOscuro").addEventListener("click", function(){
-            document.body.className="tema-oscuro"
-            localStorage.setItem("tema","tema-oscuro")
-        })
-        document.getElementById("temaClaro").addEventListener("click", function(){
-            document.body.className="tema-claro"
-            localStorage.setItem("tema","tema-claro")
-        })        
-    </script>-->

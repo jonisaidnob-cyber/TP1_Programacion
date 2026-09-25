@@ -1,88 +1,119 @@
-
 :root {
---primary-color: #2563eb;
---primary-hover: #1d4ed8;
---bg-color: #f8fafc;
---card-bg: #ffffff;
---text-main: #1e293b;
---text-muted: #64748b;
---border-color: #e2e8f0;
---shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
---header-height: 70px;
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --header-height: 70px;
 }
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
 body {
-background-color: var(--bg-color);
-color: var(--text-main);
-padding-top: calc(var(--header-height) + 1rem);
-min-height: 100vh;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    padding-top: calc(var(--header-height) + 1rem);
+    min-height: 100vh;
 }
 
 /* ==========================================
 Barra de Navegación (Header Fijo / Nav-tabs)
 ========================================== */
 header {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: var(--header-height);
-background-color: var(--card-bg);
-border-bottom: 1px solid var(--border-color);
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 0 2rem;
-z-index: 1000;
-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 1000;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
 }
 
 header h1 {
-font-size: 1.35rem;
-color: var(--primary-color);
-font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--primary-color);
+    font-weight: 700;
 }
 
 header a {
-text-decoration: none;
-color: var(--text-main);
-font-weight: 500;
-font-size: 0.95rem;
-transition: color 0.2s ease;
-display: flex;
-align-items: center;
-gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 header a:hover {
-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 header a[href="carrito.html"] {
-background-color: var(--primary-color);
-color: white;
-padding: 0.5rem 1rem;
-border-radius: 6px;
-font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
 }
 
 header a[href="carrito.html"]:hover {
-background-color: var(--primary-hover);
-color: white;
+    background-color: var(--primary-hover);
+    color: white;
 }
 
 header a img {
-width: 20px;
-height: 20px;
-object-fit: contain;
-filter: brightness(0) invert(1);
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+footer {
+    margin-top: 4rem;
+    background-color: #1f2937;
+    color: white;
+    padding: 2rem 3rem 1rem;
+}
+.footerContenido {
+    display: flex;
+    justify-content: space-around;
+    gap: 3rem;
+}
+
+.footerSeccion {
+    flex: 1;
+}
+
+.footerSeccion h3 {
+    margin-top: 0;
+}
+
+.footerSeccion p {
+    margin: 0.5rem 0;
+}
+
+.footerCopyright {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #4b5563;
+    text-align: center;
+    font-size: 0.85rem;
 }
 
 /* ==========================================
@@ -182,7 +213,8 @@ main h2 {
     font-weight: bold;
 }
 
-.botonAgregarAlCarrito, .controlCantidad button:hover {
+.botonAgregarAlCarrito,
+.controlCantidad button:hover {
     transform: scale(1.05);
 }
 
@@ -197,16 +229,18 @@ main h2 {
         padding: 0.75rem 1rem;
         gap: 0.5rem;
     }
-    
+
     body {
-        padding-top: 130px; /* Ajusta el espacio superior para el header en dos líneas */
+        padding-top: 130px;
+        /* Ajusta el espacio superior para el header en dos líneas */
     }
 
     header h1 {
         font-size: 1.1rem;
     }
-    
-    header nav, header a {
+
+    header nav,
+    header a {
         font-size: 0.85rem;
     }
 }
@@ -219,7 +253,8 @@ main h2 {
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
-    padding-top: calc(var(--header-height) + 1.5rem); /* Espacio para que el contenido no quede oculto bajo la barra fija */
+    padding-top: calc(var(--header-height) + 1.5rem);
+    /* Espacio para que el contenido no quede oculto bajo la barra fija */
     min-height: 100vh;
 }
 
@@ -227,132 +262,132 @@ body {
    Barra de Navegación Fija (Coherente con la Tienda)
    ========================================== */
 .nav-tabs {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: var(--header-height);
-background-color: var(--card-bg);
-border-bottom: 1px solid var(--border-color);
-display: flex;
-justify-content: flex-start;
-align-items: center;
-padding: 0 2rem;
-z-index: 1000;
-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 1000;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
 }
 
 .nav-btn {
-background-color: var(--primary-color);
-color: white;
-border: none;
-padding: 0.5rem 1rem;
-border-radius: 6px;
-font-weight: 600;
-font-size: 0.95rem;
-cursor: pointer;
-transition: background-color 0.2s ease;
-text-decoration: none;
-display: inline-flex;
-align-items: center;
-gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .nav-btn:hover {
-background-color: var(--primary-hover);
+    background-color: var(--primary-hover);
 }
 
 /* ==========================================
 Estructura Principal y Tarjetas (Cards)
 ========================================== */
 .container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 1.5rem 2rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem 1.5rem;
 }
 
 main {
-box-sizing: border-box;
-max-width: 50%;
-margin: 2rem auto;
-padding: 0 1.5rem;
+    box-sizing: border-box;
+    max-width: 50%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
 }
 
 main h2 {
-font-size: 1.5rem;
-margin-bottom: 1.5rem;
-color: var(--text-main);
-border-left: 4px solid var(--primary-color);
-padding-left: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+    border-left: 4px solid var(--primary-color);
+    padding-left: 0.5rem;
 }
 
 .card {
-background-color: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 12px;
-padding: 2rem;
-box-shadow: var(--shadow);
-margin-bottom: 2rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
 }
 
 .card h2 {
-font-size: 1.5rem;
-color: var(--text-main);
-margin-bottom: 0.5rem;
-border-left: 4px solid var(--primary-color);
-padding-left: 0.75rem;
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    border-left: 4px solid var(--primary-color);
+    padding-left: 0.75rem;
 }
 
 .subtitle {
-color: var(--text-muted);
-font-size: 0.95rem;
-margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
 }
 
 /* ==========================================
 Contenedor de Productos (Index)
 ========================================== */
 #listaProductos {
-display: flex;
-gap: 1.5rem;
-overflow: auto;
-width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    overflow: auto;
+    width: 100%;
 }
 
 .contenedorProducto {
-flex: 0 0 240px;
+    flex: 0 0 240px;
 }
 
 /* ==========================================
 Formulario y Rejilla de Inputs (Grid)
 ========================================== */
 .form-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.25rem;
-margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group {
-display: flex;
-flex-direction: column;
-gap: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
 .form-group.full-width {
-grid-column: 1 / -1;
+    grid-column: 1 / -1;
 }
 
 .form-group label {
-font-size: 0.875rem;
-font-weight: 600;
-color: var(--text-main);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-main);
 }
 
 .input-container {
-position: relative;
-display: flex;
-align-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .form-group input[type="text"],
@@ -361,61 +396,61 @@ align-items: center;
 .form-group input[type="date"],
 .form-group input[type="password"],
 .form-group select {
-width: 100%;
-padding: 0.75rem 1rem;
-border: 1px solid var(--border-color);
-border-radius: 8px;
-font-size: 0.95rem;
-color: var(--text-main);
-background-color: #fff;
-outline: none;
-transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-border-color: var(--primary-color);
-box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .options-group {
-display: flex;
-gap: 1.5rem;
-flex-wrap: wrap;
-padding: 0.5rem 0;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
 }
 
 .options-group label {
-font-weight: normal;
-display: flex;
-align-items: center;
-gap: 0.4rem;
-cursor: pointer;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
 }
 
 .feedback {
-font-size: 0.75rem;
-color: #ef4444;
-min-height: 1rem;
+    font-size: 0.75rem;
+    color: #ef4444;
+    min-height: 1rem;
 }
 
 /* Bloque especial de contraseña */
 .password {
-background-color: #f8fafc;
-padding: 15px;
-border: 1px solid var(--border-color);
-border-radius: 8px;
+    background-color: #f8fafc;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
 }
 
 .password p {
-font-size: 0.9rem;
-color: var(--text-muted);
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
 
 .password ol {
-margin-left: 20px;
-font-size: 0.85rem;
-color: var(--text-muted);
+    margin-left: 20px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 /* ==========================================
@@ -424,46 +459,46 @@ Secciones de Pago y Botón de Acción
 #infoEfectivo,
 #infoTarjeta,
 #infoTransferencia {
-background-color: #f8fafc;
-border: 1px solid var(--border-color);
-padding: 20px;
-border-radius: 8px;
-margin-top: 15px;
+    background-color: #f8fafc;
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
 }
 
 #infoTarjeta h3,
 #infoTransferencia h3 {
-font-size: 1.05rem;
-margin-bottom: 12px;
-color: var(--text-main);
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+    color: var(--text-main);
 }
 
 #infoTarjeta label {
-font-size: 0.85rem;
-color: var(--text-muted);
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 #infoTarjeta input {
-margin-top: 4px;
-margin-bottom: 10px;
+    margin-top: 4px;
+    margin-bottom: 10px;
 }
 
 #pagar {
-background-color: #27ae60;
-color: white;
-border: none;
-padding: 0.75rem 1.5rem;
-border-radius: 8px;
-font-weight: 600;
-cursor: pointer;
-width: 100%;
-font-size: 1rem;
-transition: background-color 0.2s ease;
-margin-top: 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    margin-top: 20px;
 }
 
 #pagar:hover {
-background-color: #219653;
+    background-color: #219653;
 }
 
 /* ==========================================
@@ -521,67 +556,67 @@ tr:hover td {
 Carrito de Compras
 ========================================== */
 .contenedor-carrito {
-max-width: 800px;
-margin: 30px auto;
-padding: 20px;
-background: var(--card-bg);
-border: 1px solid var(--border-color);
-border-radius: 12px;
-box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
 }
 
 .item-carrito {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 15px 0;
-border-bottom: 1px solid var(--border-color);
-gap: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    gap: 15px;
 }
 
 .img-carrito {
-width: 80px;
-height: 80px;
-object-fit: cover;
-border-radius: 6px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
 }
 
 .info-producto {
-flex: 1;
+    flex: 1;
 }
 
 .btn-eliminar {
-background-color: #ef4444;
-color: white;
-border: none;
-padding: 8px 12px;
-border-radius: 6px;
-cursor: pointer;
-font-weight: 600;
-transition: background-color 0.2s;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
 }
 
 .btn-eliminar:hover {
-background-color: #dc2626;
+    background-color: #dc2626;
 }
 
 .resumen-total {
-margin-top: 20px;
-text-align: right;
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-gap: 15px;
+    margin-top: 20px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
 }
 
 .btn-ir-pagar {
-background-color: #27ae60;
-color: white;
-padding: 12px 24px;
-text-decoration: none;
-border-radius: 8px;
-font-weight: bold;
-transition: background-color 0.2s;
+    background-color: #27ae60;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.2s;
 }
 
 /* ESTILOS PARA LA CANTIDAD */
@@ -592,7 +627,9 @@ transition: background-color 0.2s;
     margin-top: 10px;
 }
 
-.btn-sumar, .btn-restar, .botonAgregarAlCarrito {
+.btn-sumar,
+.btn-restar,
+.botonAgregarAlCarrito {
     background-color: var(--primary-color);
     color: white;
     transition: color 0.2s ease;
@@ -604,7 +641,9 @@ transition: background-color 0.2s;
     border-radius: 4px;
 }
 
-.btn-sumar:hover, .btn-restar, .botonAgregarAlCarrito:hover {
+.btn-sumar:hover,
+.btn-restar,
+.botonAgregarAlCarrito:hover {
     background-color: var(--primary-hover);
 }
 
@@ -622,71 +661,77 @@ transition: background-color 0.2s;
 
 /* Estilo para cuando el botón restar está deshabilitado */
 .btn-restar:disabled {
-    background-color: #f0f0f0; 
-    cursor: not-allowed; 
-    opacity: 0.6; 
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 
 .btn-restar:disabled:hover {
     background-color: #f0f0f0;
 }
+
 /* Breakpoint para Celulares Responsive */
 @media (max-width: 480px) {
     .item-carrito {
         flex-direction: column;
         text-align: center;
     }
+
     .resumen-total {
         align-items: center;
     }
-.btn-ir-pagar:hover {
-background-color: #219653;
+
+    .btn-ir-pagar:hover {
+        background-color: #219653;
+    }
 }
-}
+
 /* ==========================================
 Responsive Design
 ========================================== */
 @media (max-width: 768px) {
-header {
-padding: 0 1rem;
-flex-direction: column;
-height: auto;
-padding: 0.75rem 1rem;
-gap: 0.5rem;
-}
+    header {
+        padding: 0 1rem;
+        flex-direction: column;
+        height: auto;
+        padding: 0.75rem 1rem;
+        gap: 0.5rem;
+    }
 
-body {
-    padding-top: 130px;
-}
+    body {
+        padding-top: 130px;
+    }
 
-header h1 {
-    font-size: 1.1rem;
-}
+    header h1 {
+        font-size: 1.1rem;
+    }
 
-header nav, header a {
-    font-size: 0.85rem;
-}
+    header nav,
+    header a {
+        font-size: 0.85rem;
+    }
 
-.card {
-    padding: 1.25rem;
-}
+    .card {
+        padding: 1.25rem;
+    }
 
-main {
-    max-width: 100%;
-}
+    main {
+        max-width: 100%;
+    }
 
 
 }
 
 @media (max-width: 480px) {
-.item-carrito {
-flex-direction: column;
-text-align: center;
-}
-.resumen-total {
-align-items: center;
-}
+    .item-carrito {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .resumen-total {
+        align-items: center;
+    }
 }
 
 
@@ -764,9 +809,12 @@ align-items: center;
     color: #333;
     margin-bottom: 30px;
 }
+
 #btn-agregar-detalle {
-    align-self: flex-start; /* Evita que el botón se estire a lo ancho */
-    padding: 15px 30px; /* Le da más aire por dentro */
+    align-self: flex-start;
+    /* Evita que el botón se estire a lo ancho */
+    padding: 15px 30px;
+    /* Le da más aire por dentro */
     font-size: 18px;
     cursor: pointer;
     border: none;
