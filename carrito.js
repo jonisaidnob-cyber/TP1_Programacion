@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        btnPagar.style.display = "inline-block";
+        if (btnPagar) btnPagar.style.display = "inline-block";
 
         carrito.forEach((producto, index) => {
             let subtotal = producto.precio * producto.cantidad;
@@ -115,5 +115,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- ARRANQUE DE LA APLICACIÓN ---
     agregarProductosRepetidos();
+    // Evento para ir a pagar: guarda el total y redirige al formulario unificado
+    if (btnPagar) {
+        btnPagar.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            // Calculamos el total actual
+            let totalGeneral = carrito.reduce((acumulador, prod) => acumulador + prod.precio, 0);
+
+            // Guardamos el total y los datos clave de la orden en el localStorage
+            localStorage.setItem("totalCompra", totalGeneral);
+            localStorage.setItem("resumenCompra", JSON.stringify(carrito));
+
+            // Redirigimos al HTML de registro y pago unificado 
+            // (Cambia "registro.html" por el nombre exacto de tu archivo HTML unificado)
+            window.location.href = "nuevregistro.html"; 
+        });
+    }
+
+    // Arrancamos la aplicación
     renderizarCarrito();
 });

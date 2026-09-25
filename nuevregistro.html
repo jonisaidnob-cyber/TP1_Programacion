@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Registro</title>
-  <script src="registro.js" defer></script>
+  <title>Sistema de Registro y Pago</title>
+  <script src="nuevregistro.js" defer></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -18,11 +18,11 @@
       <a href="index.html" class="nav-btn">Volver</a>
     </nav>
 
-    <!-- SECCIÓN 1: FORMULARIO DE REGISTRO TIPO CLIENTE + CRUD -->
+    <!-- SECCIÓN UNIFICADA: REGISTRO + MÉTODO DE PAGO -->
     <section id="sec-registro" class="tab-content active">
       <div class="card">
-        <h2>Formulario de Registro de Clientes</h2>
-        <p class="subtitle">Complete los campos solicitados.</p>
+        <h2>Formulario de Registro y Pago</h2>
+        <p class="subtitle">Complete los campos solicitados y seleccione su método de pago.</p>
 
         <form id="registroForm" novalidate>
           <input type="hidden" id="userId">
@@ -108,8 +108,6 @@
                   <option value="Catamarca">Catamarca</option>
                   <option value="La Rioja">La Rioja</option>
                   <option value="Santa Cruz">Santa Cruz</option>
-
-
                 </select>
                 <span class="status-icon"></span>
               </div>
@@ -136,7 +134,7 @@
               <span class="feedback"></span>
             </div>
 
-            <!-- Campo Adicional: Fecha de Alta (Validación cruzada) -->
+            <!-- Campo Adicional: Fecha de Alta -->
             <div class="form-group" id="group-fechaRegistro">
               <label for="fechaRegistro">Fecha de Alta *</label>
               <div class="input-container">
@@ -157,31 +155,81 @@
               <span class="feedback"></span>
             </div>
 
-            <!-- Campo Adicional: Checkbox Group -->
-            <div class="form-group full-width" id="group-preferencias">
-              <label>Canales de Contacto Preferidos (Seleccione al menos 1) *</label>
+            <!-- Contraseña -->
+            <div class="password form-group full-width">
+              <p>Selecciona Contraseña</p>
+              <input type="password" name="pass" id="contra">
+              <br>
+              <p><em>La contraseña debe tener:</em></p>
+              <ol>Al menos 8 caracteres</ol>
+              <ol>Contener al menos un caracter especial</ol>
+              <ol>Al menos una mayúscula</ol>
+            </div>
+
+            <!-- SECCIÓN DE MÉTODO DE PAGO DENTRO DE LA GRILLA -->
+            <div class="form-group full-width" id="group-metodoPago">
+              <label>Método de Pago *</label>
               <div class="options-group">
-                <label><input type="checkbox" name="preferencias" value="WhatsApp"> WhatsApp</label>
-                <label><input type="checkbox" name="preferencias" value="Email"> Email</label>
-                <label><input type="checkbox" name="preferencias" value="Llamada"> Llamada</label>
+                <select id="metodoPago" required>
+                  <option value="">-- Selecciona --</option>
+                  <option value="efectivo">Efectivo</option>
+                  <option value="debito">Tarjeta de Débito</option>
+                  <option value="credito">Tarjeta de Crédito</option>
+                  <option value="transferencia">Transferencia Bancaria</option>
+                </select>
+                <span class="status-icon"></span>
               </div>
               <span class="feedback"></span>
             </div>
-            <div class="password">
-                <p>Selecciona Contraseña</p>
-                <input type="password" name="pass" id="contra">
-                <br>
-                <p><em>La contraseña debe tener:</em></em></p>
-                <ol>Al menos 8 caracteres</ol>
-                <ol>Contener al menos un caracter especial</ol>
-                <ol>Al menos una mayúscula</ol>
+
+          </div> <!-- FIN DE FORM-GRID -->
+
+          <!-- DETALLES DE PAGO FUERA DE LA GRILLA -->
+          
+          <!-- Sección para Efectivo -->
+          <div id="infoEfectivo" style="display: none; margin-top: 15px;">
+            <p>Aviso: El pago en efectivo es únicamente con retiro en sucursal.</p>
+          </div>
+
+          <!-- Sección para Tarjetas -->
+          <div id="infoTarjeta" style="display: none; margin-top: 15px;">
+            <h3>Datos de la Tarjeta</h3>
+            <div style="margin-bottom: 10px;">
+              <label>Número de tarjeta:</label><br>
+              <input type="text" id="numTarjeta" maxlength="16" placeholder="XXXX XXXX XXXX XXXX" style="width: 100%; padding: 8px;">
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label>Fecha de vencimiento:</label><br>
+              <input type="text" id="vencimiento" placeholder="MM/AA" style="width: 100%; padding: 8px;">
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label>CVV:</label><br>
+              <input type="password" id="cvv" maxlength="4" placeholder="123" style="width: 100%; padding: 8px;">
+            </div>
+            <div style="margin-bottom: 10px;">
+              <label>Titular:</label><br>
+              <input type="text" id="titular" placeholder="Nombre y apellido" style="width: 100%; padding: 8px;">
             </div>
           </div>
-          <button id="confirmar">Confirmar</button>
 
-        
+          <!-- Sección para Transferencia -->
+          <div id="infoTransferencia" style="display: none; margin-top: 15px;">
+            <h3>Datos para Transferencia</h3>
+            <p>CBU: 0000003100012345678999</p>
+            <p>Alias: tienda.digital</p>
+            <p>Banco: Banco Galicia</p>
+            <p>Titular de la cuenta: JEP S.A</p>
+          </div>
+
+          <br>
+          <button type="button" id="pagar" style="margin-top: 20px;">Confirmar compra</button>
+
         </form>
       </div>
-      </body>
+    </section>
+
+  </div>
+
+</body>
 
 </html>
