@@ -5,6 +5,7 @@
 const listaProductos = document.getElementById("listaProductos");
 
 function mostrarProducto(producto) {
+    
     const nuevoContenedorProducto = document.createElement("div");
     nuevoContenedorProducto.classList.add("contenedorProducto");
     listaProductos.appendChild(nuevoContenedorProducto);
@@ -28,7 +29,7 @@ function mostrarProducto(producto) {
 
     const nuevoPrecio = document.createElement("p");
     nuevoContenedorProducto.appendChild(nuevoPrecio);
-    nuevoPrecio.textContent = "$" + producto.precio;
+    nuevoPrecio.textContent = "$" + producto.precio.toLocaleString('es-AR');
 
     //Botón para agregar el producto al carrito si no está
     const nuevoBotonCarrito = document.createElement("button");
@@ -38,6 +39,7 @@ function mostrarProducto(producto) {
     nuevoBotonCarrito.addEventListener("click", function () {
         agregarAlCarrito(producto);
         visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
+        textoCantidad.textContent = actualizarCantidad(producto, 0);
     });
 
     //Botones para modificar la cantidad del producto en el carrito si ya fue agragado
@@ -48,6 +50,7 @@ function mostrarProducto(producto) {
     const botonMenos = document.createElement("button");
     botonMenos.textContent = "-";
     contenedorCantidad.appendChild(botonMenos);
+    botonMenos.classList.add("btn-restar");
     botonMenos.addEventListener("click", function () {
         textoCantidad.textContent = actualizarCantidad(producto, -1);
         visibilidadDeBotones(producto, nuevoBotonCarrito, contenedorCantidad);
@@ -55,12 +58,13 @@ function mostrarProducto(producto) {
     })
 
     const textoCantidad = document.createElement("span");
-    textoCantidad.textContent = "1";
+    textoCantidad.textContent = actualizarCantidad(producto, 0);
     contenedorCantidad.appendChild(textoCantidad);
 
     const botonMas = document.createElement("button");
     botonMas.textContent = "+";
     contenedorCantidad.appendChild(botonMas);
+    botonMas.classList.add("btn-sumar");
     botonMas.addEventListener("click", function () {
         textoCantidad.textContent = actualizarCantidad(producto, 1);
     })
@@ -74,7 +78,7 @@ function agregarAlCarrito(producto) {
     const productoEnCarrito = carrito.find(p => p.id === producto.id);
 
     if (productoEnCarrito) {
-        productoEnCarrito.cantidad++;
+        productoEnCarrito.cantidad = 1;
     } else {
         carrito.push({
             ...producto,
