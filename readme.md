@@ -33,7 +33,7 @@ El proyecto está organizado de la siguiente manera:
 
 ---
 
-## 💻 Vista Previa / Capturas de Pantalla
+## 💻 Vista Previa
 
 ###  Página Principal y Catálogo
 ![Catálogo](assets/img/pag1.png)
